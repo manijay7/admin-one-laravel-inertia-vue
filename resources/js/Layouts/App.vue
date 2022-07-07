@@ -19,6 +19,12 @@ mainStore.setUser({
 
 const layoutStore = useLayoutStore();
 layoutStore.fullScreenToggle(false);
+
+const isAsideLgActive = computed(() => layoutStore.isAsideLgActive);
+
+const overlayClick = () => {
+  layoutStore.asideLgToggle(false);
+};
 </script>
 
 <template>
