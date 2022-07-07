@@ -15,18 +15,25 @@ import { createInertiaApp } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
 import { Inertia } from "@inertiajs/inertia";
 
+import App from "./Layouts/App.vue";
+
 const pinia = createPinia();
 
 const appName =
-  window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
+  window.document.getElementsByTagName("title")[0]?.innerText || "Admin One";
 
 createInertiaApp({
   title: (title) => `${title} - ${appName}`,
-  resolve: (name) =>
-    resolvePageComponent(
+  resolve: (name) => {
+    const page = resolvePageComponent(
       `./Pages/${name}.vue`,
       import.meta.glob("./Pages/**/*.vue")
-    ),
+    );
+    page.then((module) => {
+      module.default.layout = module.default.layout || App;
+    });
+    return page;
+  },
   setup({ el, app, props, plugin }) {
     return createApp({ render: () => h(app, props) })
       .use(plugin)

@@ -1,14 +1,14 @@
 <script setup>
-import { mdiGithub } from '@mdi/js'
-import BaseLevel from '@/components/BaseLevel.vue'
-import BaseButton from '@/components/BaseButton.vue'
+import { mdiGithub } from "@mdi/js";
+import BaseLevel from "@/components/BaseLevel.vue";
+import BaseButton from "@/components/BaseButton.vue";
 
 defineProps({
   titleStack: {
     type: Array,
-    default: () => []
-  }
-})
+    default: () => [],
+  },
+});
 </script>
 
 <template>
@@ -23,13 +23,6 @@ defineProps({
           {{ title }}
         </li>
       </ul>
-      <BaseButton
-        href="https://github.com/justboil/admin-one-vue-tailwind"
-        color="info"
-        label="Star on GitHub"
-        target="_blank"
-        :icon="mdiGithub"
-      />
     </BaseLevel>
   </section>
 </template>
